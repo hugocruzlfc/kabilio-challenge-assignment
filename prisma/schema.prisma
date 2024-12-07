@@ -12,3 +12,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Tag {
+  Important
+  Work
+  Personal
+  Meeting
+  Spam
+}
+
+model Email {
+  id        String   @id @default(cuid())
+  body      String
+  tag       Tag
+  read      Boolean  @default(false)
+  from      String
+  to        String
+  subject   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
