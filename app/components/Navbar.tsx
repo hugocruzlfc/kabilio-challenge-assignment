@@ -4,13 +4,13 @@ import { Mail } from "lucide-react";
 export default function Navbar() {
   const { pathname } = useLocation();
 
-  const createPathname = pathname === "/admin-dashboard";
+  const landingPage = pathname === "/";
 
-  const userType = createPathname ? "Admin" : "User";
+  const userType = landingPage ? "User" : "Admin";
 
-  const userTypeMessage = createPathname
-    ? "Manage and oversee email operations with ease and efficiency"
-    : "Enjoy simple and easy sending of emails";
+  const userTypeMessage = landingPage
+    ? "Enjoy simple and easy sending of emails"
+    : "Manage and oversee email operations with ease and efficiency";
 
   return (
     <header role="banner" className="text-light sticky top-0 bg-secondary">
