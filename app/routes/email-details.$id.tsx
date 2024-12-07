@@ -32,17 +32,19 @@ export async function loader({ params }: LoaderFunctionArgs) {
     },
   });
 
-  await prisma.email.update({
-    where: {
-      id: params.id,
-    },
-    data: {
-      read: true,
-    },
-  });
-
   if (!currentEmail) {
     return { status: 404 };
+  }
+
+  if (!currentEmail.read) {
+    await prisma.email.update({
+      where: {
+        id: params.id,
+      },
+      data: {
+        read: true,
+      },
+    });
   }
 
   return { email: currentEmail };

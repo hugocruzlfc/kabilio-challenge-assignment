@@ -80,6 +80,30 @@ export async function loader({ request }: LoaderFunctionArgs) {
   };
 }
 
+export async function action({ request }: LoaderFunctionArgs) {
+  const formData = await request.formData();
+  const values = Object.fromEntries(formData);
+
+  console.log(values);
+
+  if (request.method === "PUT") {
+    await prisma.email.update({
+      where: {
+        id: values.id as string,
+      },
+      data: {
+        read: false,
+      },
+    });
+  } else {
+    throw new Response("Not allowed", {
+      status: 400,
+    });
+  }
+
+  return true;
+}
+
 export default function AdminDashboardPage() {
   const { state } = useNavigation();
   const { emails, count } = useLoaderData<typeof loader>();

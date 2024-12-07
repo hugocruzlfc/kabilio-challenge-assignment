@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { UpdateStatusButton } from "./UpdateStatusButton";
 
 export interface EmailTileProps {
   email: Email;
@@ -26,8 +27,8 @@ export function EmailTile({ email }: EmailTileProps) {
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Link to={`/email-details/${id}`}>
+        <Link to={`/email-details/${id}`}>
+          <TooltipTrigger asChild>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <div className="space-y-2">
@@ -38,13 +39,14 @@ export function EmailTile({ email }: EmailTileProps) {
               </CardHeader>
               <CardContent className="flex flex-row items-center justify-between">
                 <ReadStatus read={read} />
+                {read && <UpdateStatusButton emailId={id} />}
               </CardContent>
             </Card>
-          </Link>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{`View Details from ${from}`}</p>
-        </TooltipContent>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{`View Details from ${from}`}</p>
+          </TooltipContent>
+        </Link>
       </Tooltip>
     </TooltipProvider>
   );

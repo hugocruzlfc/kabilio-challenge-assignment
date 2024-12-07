@@ -9,6 +9,7 @@ import {
 
 import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
+import { Toaster } from "./components/ui/toaster";
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
@@ -39,6 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
         <Footer />
+        <Toaster />
         <ScrollRestoration />
         <Scripts />
       </body>
