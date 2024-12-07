@@ -29,7 +29,7 @@ export function EmailTile({ email }: EmailTileProps) {
       <Tooltip>
         <Link to={`/email-details/${id}`}>
           <TooltipTrigger asChild>
-            <Card>
+            <Card className="min-h-40">
               <CardHeader className="flex flex-row items-center justify-between">
                 <div className="space-y-2">
                   <CardTitle>{subject}</CardTitle>
@@ -37,7 +37,7 @@ export function EmailTile({ email }: EmailTileProps) {
                 </div>
                 <Badge>{tag}</Badge>
               </CardHeader>
-              <CardContent className="flex flex-row items-center justify-between">
+              <CardContent className="flex flex-row items-center justify-between p-0 px-6">
                 <ReadStatus read={read} />
                 {read && <UpdateStatusButton emailId={id} />}
               </CardContent>

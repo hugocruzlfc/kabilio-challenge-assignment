@@ -1,6 +1,24 @@
-# Welcome to Remix!
+# Welcome to Project!
 
-- 📖 [Remix docs](https://remix.run/docs)
+## Getting Started
+
+Clone the repo and create .env file with the following content:
+
+```shellscript
+ touch .env && echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5433/emailmanager_db?schema=public" > .env
+```
+
+Make sure you have docker installed and start the database:
+
+```shellscript
+docker compose up -d
+```
+
+Install dependencies:
+
+```shellscript
+npm install
+```
 
 ## Development
 
@@ -10,31 +28,20 @@ Run the dev server:
 npm run dev
 ```
 
-## Deployment
+## Understanding the project
 
-First, build your app for production:
+This project is a simple email manager. It has a list of emails and you can add simulating a user and delete and update status if you are an admin.
 
-```sh
-npm run build
-```
+The project has 3 main routes.
 
-Then run the app in production mode:
+“/” the landing page to create the emails, simulating that it is a random user who enters the app.
 
-```sh
-npm start
-```
+“/admin-dashboard” for the core of the app where the administrator reviews the available emails. He has the possibility to filter them, paginate them and see their details.
 
-Now you'll need to pick a host to deploy it to.
+“/email-details” where the administrator can read the emails.
 
-### DIY
+## Workflow
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+Create a few emails, preferably more than 9 if you want to play with pagination.
 
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+Then, navigate to the “/admin-dashboard” address and work as administrator.
