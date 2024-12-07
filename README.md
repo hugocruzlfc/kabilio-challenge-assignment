@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Clone the repo and create .env file with the following content:
+Clone the repository and paste the following into a console to create the .env:
 
 ```shellscript
  touch .env && echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5433/emailmanager_db?schema=public" > .env

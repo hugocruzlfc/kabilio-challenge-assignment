@@ -84,7 +84,6 @@ export async function action({ request }: LoaderFunctionArgs) {
   const formData = await request.formData();
   const values = Object.fromEntries(formData);
 
-  console.log(values);
 
   if (request.method === "PUT") {
     await prisma.email.update({
