@@ -6,6 +6,7 @@ import { getAdminFiltersFromQuery } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 
 import { EmailTile } from "@/components/EmailTile";
+import Pagination from "@/components/Pagination";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
@@ -87,6 +88,7 @@ export default function AdminDashboardPage() {
 
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const totalPages = Math.ceil(count / PER_PAGE);
 
   const clearFilters = () => {
     setSearchParams({});
@@ -148,6 +150,9 @@ export default function AdminDashboardPage() {
             <CardTitle className="text-xl">Not emails found!</CardTitle>
           </CardHeader>
         </Card>
+      )}
+      {totalPages > 1 && (
+        <Pagination totalPages={totalPages} pageParam="page" />
       )}
     </div>
   );
